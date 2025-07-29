@@ -2,6 +2,8 @@
 
 修改自：[冰焰模板 4.3.0](https://chinadlrs.com/app/?id=41)
 
+Unity版本：Unity 6000.0.25f1
+
 ## 模板说明
 本模板为 [SoraSush776/MaxIF-4-3-0](https://github.com/SoraSushi776/MaxIFT-4-3-0) 的再次修改
 
