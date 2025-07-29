@@ -11,7 +11,7 @@
 
 我们修改这个模板的目的是为了减少 共舞的线 源工程的负担，同时提高关卡制作的效率
 
-本模板内置了一些好用的插件，例如 Curify 动画曲线、MeshCombiner 模型合并、 NoteRead OSU 谱面文件铺路机、ScreenShot 截图工具、请查看菜单栏的 `Tools` 或 `Windows` 列表了解更多
+本模板内置了一些好用的插件，例如 Curify 动画曲线、MeshCombiner 模型合并、 NoteReader OSU 谱面文件铺路机、ScreenShot 截图工具、请查看菜单栏的 `Tools` 或 `Windows` 列表了解更多
 
 ## 模板使用前必读！
 0. 请务必使用上方的 **Use This Template** 创建一个自己的 Github 仓库方便管理
