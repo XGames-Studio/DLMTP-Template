@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eeae46dfa7cb784e8f4caf828b6f773, type: 3}
+  m_Name: Default
+  m_EditorClassIdentifier: 
+  saveID: 13
+  levelTitleKey: Default
+  speed: 12
+  timeScale: 1
+  gravity: {x: 0, y: -9.3, z: 0}
+  playerHeadBoxColliderSize: {x: 0.3, y: 1, z: 0.3}
+  haveMultipleAudio: 0
+  colors:
+  - material: {fileID: 2100000, guid: 4a9a05847c8609548b12b570d0f8317f, type: 2}
+    color: {r: 1, g: 0.9803922, b: 0.42352945, a: 1}
+    hasEmission: 0
+    intensity: 0
+  - material: {fileID: 2100000, guid: 6b689dd40c56e9c4d89d730b21c8011a, type: 2}
+    color: {r: 0, g: 0.7721448, b: 1, a: 1}
+    hasEmission: 0
+    intensity: 0
