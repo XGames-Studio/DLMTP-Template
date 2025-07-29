@@ -1,9 +1,0 @@
-ManifestFileVersion: 0
-UnityVersion: 6000.0.25f1
-CRC: 4109193768
-HashAppended: 0
-AssetBundleManifest:
-  AssetBundleInfos:
-    Info_0:
-      Name: autumn
-      Dependencies: {}

@@ -13,6 +13,7 @@
 
 ## 模板使用前必读！
 0. 请务必使用上方的 **Use This Template** 创建一个自己的 Github 仓库方便管理
+- 若你不需要创建 Github 仓库，请点击上方 **绿色的 Code 按钮**，单击 **Download Zip** 下载模板文件
 1. 首先你需要将音乐文件放入 `Assets\Resources\MusicTrack` 并命名为 `Level[场景名称].mp3/ogg/wav`
 -  例如场景名称为 `Autumn` 则音乐文件的路径为 `AssetsResources\MusicTrack\LevelAutumn.mp3`
 - 此处音乐文件格式任意，只要是 Unity 可以读取的音乐文件格式即可
