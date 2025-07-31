@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Playables;
@@ -296,9 +297,22 @@ namespace DancingLineFanmade.Level
             }
         }
         
-        internal void RevivePlayer(Checkpoint checkpoint)
+        internal void RevivePlayer(Object checkpoint)
         {
-            checkpoint.Revival();
+            if (checkpoint.GetComponent<Crown>())
+            {
+                checkpoint.GetComponent<Crown>().Revival();
+            }
+            
+            if (checkpoint.GetComponent<Checkpoint>())
+            {
+                checkpoint.GetComponent<Checkpoint>().Revival();
+            }
+
+            if (checkpoint.GetComponent<TTFCheckPoint>())
+            {
+                checkpoint.GetComponent<TTFCheckPoint>().Revival();
+            }
         }
 
         IEnumerator StartGame(float delay)

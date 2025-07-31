@@ -107,7 +107,8 @@ namespace DancingLineFanmade.Level
                 case DieReason.Hit:
                     GameState = GameStatus.Died;
                     AudioManager.PlayClip(Resources.Load<AudioClip>("Audios/Hit"), 1f);
-                    dieCubes = Object.Instantiate(cubes, player.transform.position, player.transform.rotation);
+                    Debug.Log(cubes);
+                    if (cubes) dieCubes = Object.Instantiate(cubes, player.transform.position, player.transform.rotation);
                     dieCubes?.GetComponent<PlayerCubes>().Play(collision);
                     break;
                 case DieReason.Drowned:

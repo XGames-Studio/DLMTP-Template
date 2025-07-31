@@ -100,7 +100,7 @@ namespace DancingLineFanmade.UI
         public void RevivePlayer()
         {
             foreach (Button b in buttonsRevive) b.interactable = false;
-            player.RevivePlayer(player.Checkpoints[player.Checkpoints.Count - 1]);
+            player.RevivePlayer(player.currentCheckpoint);
         }
 
         public void CancelRevive()
