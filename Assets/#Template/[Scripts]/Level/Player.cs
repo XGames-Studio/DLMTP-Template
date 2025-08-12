@@ -201,8 +201,15 @@ namespace DancingLineFanmade.Level
             });
 
             string sceneName = SceneManager.GetActiveScene().name;
-            levelAudioClip = Resources.Load<AudioClip>("MusicTrack/Level" + sceneName);
-            
+
+            if (levelData.levelAudioClip)
+            {
+                levelAudioClip = levelData.levelAudioClip;
+            }
+            else
+            {
+                levelAudioClip = Resources.Load<AudioClip>("MusicTrack/Level" + sceneName);
+            }
             
             // 清空所有复活事件
             LevelManager.ResetRevivePlayer();

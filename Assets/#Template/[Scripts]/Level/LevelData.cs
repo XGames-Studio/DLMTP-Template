@@ -17,6 +17,7 @@ namespace DancingLineFanmade.Level
         [MinValue(0f)] public float timeScale = 1f;
         public Vector3 gravity = LevelManager.defaultGravity;
         public Vector3 playerHeadBoxColliderSize = new Vector3(0.3f, 1f, 0.3f);
+        public AudioClip levelAudioClip = null;
         public bool haveMultipleAudio = false;
         [TableList] public List<SingleColor> colors = new List<SingleColor>();
 
