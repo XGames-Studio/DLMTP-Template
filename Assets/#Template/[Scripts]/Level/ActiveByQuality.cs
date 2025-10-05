@@ -19,7 +19,7 @@ namespace DancingLineFanmade.Level
                 case 1:
                     gameObject.SetActive(showInMedium);
                     break;
-                case 2:
+                case >=2:
                     gameObject.SetActive(showInHigh);
                     break;
             }
