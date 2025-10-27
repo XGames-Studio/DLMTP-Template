@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 41238723}
   - component: {fileID: 41238724}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PostHolder_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,12 +144,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41238722}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 608782114}
+  m_Father: {fileID: 965964437}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &41238724
 MonoBehaviour:
@@ -295,7 +295,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 202106110}
-  - {fileID: 41238723}
+  - {fileID: 965964437}
   - {fileID: 656156124}
   m_Father: {fileID: 1226733103}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -377,6 +377,38 @@ MonoBehaviour:
   target: {fileID: 2016498982}
   follow: 1
   smooth: 1
+--- !u!1 &965964436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 965964437}
+  m_Layer: 7
+  m_Name: PostHolder_Group
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &965964437
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965964436}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 41238723}
+  m_Father: {fileID: 608782114}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1226733102
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,7 +452,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1680985574}
-  - component: {fileID: 1680985575}
+  - component: {fileID: 1680985576}
   m_Layer: 0
   m_Name: LevelHolder
   m_TagString: Untagged
@@ -445,27 +477,21 @@ Transform:
   - {fileID: 766737584}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!320 &1680985575
-PlayableDirector:
+--- !u!114 &1680985576
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680985569}
   m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: ce8d98e6fb40b7b449da8bf488022524, type: 2}
-  m_InitialState: 1
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 7570059918949131200, guid: ce8d98e6fb40b7b449da8bf488022524, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -645876257961904966, guid: ce8d98e6fb40b7b449da8bf488022524, type: 2}
-    value: {fileID: 0}
-  m_ExposedReferences:
-    m_References: []
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c57e8e1e9a3314fbdd84069cb0ede5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DancingLineFanmade.Level.TimeScale
+  key: 116
+  enabledValue: 1.3
+  disabledValue: 1
 --- !u!1 &1770342750
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,7 +878,7 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
