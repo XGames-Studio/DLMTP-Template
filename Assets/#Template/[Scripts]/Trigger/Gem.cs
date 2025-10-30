@@ -28,7 +28,7 @@ namespace DancingLineFanmade.Trigger
 
         private void Update()
         {
-            transform.Rotate(Vector3.up, Time.deltaTime * 60f);
+            transform.Rotate(Vector3.up, Time.deltaTime * 40f);
         }
 
         private void OnTriggerEnter(Collider other)
