@@ -15,7 +15,7 @@ namespace DancingLineFanmade.Trigger
             if (other.CompareTag("Player"))
             {
                 if (changeDirection) Player.Instance.Turn();
-                Player.Rigidbody.AddForce(0, power * Player.Rigidbody.mass, 0, ForceMode.Force);
+                Player.Rigidbody.AddForce(0, power, 0, ForceMode.Impulse);
                 Player.Instance.Events?.Invoke(7);
             }
         }
