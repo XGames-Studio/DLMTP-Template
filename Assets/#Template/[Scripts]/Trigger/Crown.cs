@@ -180,7 +180,7 @@ namespace DancingLineFanmade.Trigger
 
         public void AnimateCrown(bool show)
         {
-            crownTween = crownRenderer.DOFade(show ? 1 : 0, auraTweenDuration / 2f);
+            crownTween = crownRenderer.DOFade(show ? 1 : 0, auraTweenDuration / 4f);
             crownTween.SetEase(Ease.OutSine);
             crownTween.OnComplete(() =>
             {
