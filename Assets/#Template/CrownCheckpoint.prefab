@@ -10143,6 +10143,7 @@ GameObject:
   - component: {fileID: 1276493222790950835}
   - component: {fileID: 1050690443006155430}
   - component: {fileID: 668684416228137475}
+  - component: {fileID: 3196047051437158118}
   m_Layer: 0
   m_Name: RevivePos
   m_TagString: Untagged
@@ -10180,7 +10181,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9186329949956858644}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -10242,3 +10243,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3196047051437158118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9186329949956858644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1ddc8ffc7fa364ba659aa5bafac184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisableInPlayMode
+  disableInPlayMode: 1

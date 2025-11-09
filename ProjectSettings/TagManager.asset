@@ -16,8 +16,8 @@ TagManager:
   - UI
   - FakePlayer
   - PostProcess
-  - 
-  - 
+  - Collider_ImpactFragment
+  - Collider_ImpactPlayer
   - 
   - 
   - 
