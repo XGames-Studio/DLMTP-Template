@@ -77,8 +77,8 @@ namespace DancingLineFanmade.Trigger
 
         private void Update()
         {
-            frame.Rotate(Vector3.up, Time.deltaTime * -45f);
-            core.Rotate(Vector3.up, Time.deltaTime * 45f);
+            frame.Rotate(Vector3.up, Time.deltaTime * -18f);
+            core.Rotate(Vector3.up, Time.deltaTime * 60f);
         }
 
         internal void EnterTrigger()

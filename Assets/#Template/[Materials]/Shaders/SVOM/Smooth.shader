@@ -2,8 +2,8 @@ Shader "SVOM/Smooth"
 {
 	Properties
 	{
-		_MainColor("MainColor", Color) = (1,0,0,0)
-		_SurfaceColor("SurfaceColor", Color) = (1,1,1,0)
+		[HDR]_MainColor("MainColor", Color) = (1,0,0,0)
+		[HDR]_SurfaceColor("SurfaceColor", Color) = (1,1,1,0)
 		_SmoothStrength("SmoothStrength", Range( 0 , 10)) = 5
 	}
 
