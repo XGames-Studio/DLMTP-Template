@@ -95,9 +95,9 @@ namespace DancingLineFanmade.UI
             }
             
             QualitySettings.shadows = shadowToggle.isOn ? ShadowQuality.All : ShadowQuality.Disable;
-            
-            PostProcessLayer[] postProcessLayers = FindObjectsOfType<PostProcessLayer>(true);
-            foreach (PostProcessLayer p in postProcessLayers)
+
+            PostProcessVolume[] postProcessVolumes = FindObjectsOfType<PostProcessVolume>(true);
+            foreach (PostProcessVolume p in postProcessVolumes)
             {
                 p.enabled = postProcessToggle.isOn;
             }

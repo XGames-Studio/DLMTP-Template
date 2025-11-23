@@ -788,6 +788,7 @@ MonoBehaviour:
   noDeath: 0
   drawDirection: 0
   musicDelay: 0
+  musicVolume: 1
   gameStarts: 0
   currentCheckpoint: {fileID: 0}
   lastCrown: {fileID: 0}
