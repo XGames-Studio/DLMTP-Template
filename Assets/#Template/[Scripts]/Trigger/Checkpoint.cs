@@ -15,7 +15,18 @@ namespace DancingLineFanmade.Trigger
         private Player player;
 
         public Transform rotator;
-        public bool usingOldCameraFollower;
+        
+        [Space(10.0f), SerializeField] private bool AutoRecord = false;
+        [SerializeField, HideIf(nameof(AutoRecord))]
+        private float GameTime;
+        private int trackProgress;
+        [SerializeField, HideIf(nameof(AutoRecord))]
+        private float playerSpeed;
+        private Vector3 sceneGravity;
+        private Vector3 playerFirstDirection;
+        private Vector3 playerSecondDirection;
+
+        [Space(10.0f), SerializeField] public bool usingOldCameraFollower;
         private Transform frame;
         private Transform core;
         private Transform revivePosition;
@@ -46,16 +57,6 @@ namespace DancingLineFanmade.Trigger
 
         [Title("Event")]
         [SerializeField] private UnityEvent onRevive = new UnityEvent();
-
-        [Space(30.0f), SerializeField] private bool AutoRecord = false;
-        [SerializeField, HideIf(nameof(AutoRecord))]
-        private float GameTime;
-        private int trackProgress;
-        [SerializeField, HideIf(nameof(AutoRecord))]
-        private float playerSpeed;
-        private Vector3 sceneGravity;
-        private Vector3 playerFirstDirection;
-        private Vector3 playerSecondDirection;
 
         private List<SetActive> actives = new List<SetActive>();
         private List<PlayAnimator> animators = new List<PlayAnimator>();

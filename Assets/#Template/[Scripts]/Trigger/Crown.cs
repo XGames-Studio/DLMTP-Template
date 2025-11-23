@@ -13,15 +13,29 @@ namespace DancingLineFanmade.Trigger
     public class Crown : MonoBehaviour
     {
         public GameObject crownObject;
-        public bool usingOldCameraFollower;
-
-        public ParticleSystem crownAura;
 
         public SpriteRenderer crownRenderer;
 
         private const float auraTweenDuration = 1.25f;
 
         private MeshRenderer crownMeshRenderer;
+
+        public Transform revivePosition;
+
+        [Space(10.0f), SerializeField] public ParticleSystem crownAura;
+        public Color auraColor=new Color(1,0.97254902f,0,1);
+
+        [Space(10.0f), SerializeField] private bool AutoRecord = false;
+        [SerializeField, HideIf(nameof(AutoRecord))]
+        private float GameTime;
+        private int trackProgress;
+        [SerializeField, HideIf(nameof(AutoRecord))]
+        private float playerSpeed;
+        private Vector3 sceneGravity;
+        private Vector3 playerFirstDirection;
+        private Vector3 playerSecondDirection;
+
+        [Space(10.0f), SerializeField] public bool usingOldCameraFollower;
 
         private Tween crownTween;
 
@@ -59,18 +73,6 @@ namespace DancingLineFanmade.Trigger
         [Title("Event")]
         [SerializeField] private UnityEvent onRevive = new UnityEvent();
 
-        [Space(30.0f), SerializeField] private bool AutoRecord = false;
-        [SerializeField, HideIf(nameof(AutoRecord))]
-        private float GameTime;
-        private int trackProgress;
-        [SerializeField, HideIf(nameof(AutoRecord))]
-        private float playerSpeed;
-        private Vector3 sceneGravity;
-        private Vector3 playerFirstDirection;
-        private Vector3 playerSecondDirection;
-
-        public Transform revivePosition;
-
         private List<SetActive> actives = new List<SetActive>();
         private List<PlayAnimator> animators = new List<PlayAnimator>();
         private List<FakePlayer> fakes = new List<FakePlayer>();
@@ -94,7 +96,7 @@ namespace DancingLineFanmade.Trigger
         private void InitParticles()
         {
             if (!crownAura) return;
-            var color = crownMeshRenderer.material.color;
+            var color = auraColor;
             color.a = 0f;
             var systems = crownAura.GetComponentsInChildren<ParticleSystem>();
             foreach (var VARIABLE in systems)
@@ -203,7 +205,7 @@ namespace DancingLineFanmade.Trigger
 
         private void RefreshParticlesColor()
         {
-            var color = crownMeshRenderer.material.color;
+            var color = auraColor;
             var systems = crownAura.GetComponentsInChildren<ParticleSystem>();
             foreach (var VARIABLE in systems)
             {
