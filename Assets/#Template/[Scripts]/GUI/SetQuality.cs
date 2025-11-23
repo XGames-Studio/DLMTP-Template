@@ -51,34 +51,33 @@ namespace DancingLineFanmade.UI
         {
             postProcessToggle.isOn = enable;
             post.enabled = enable;
+            
+            SetText();
         }
         
         public void SetShadow(bool enable)
         {
             shadowToggle.isOn = enable;
-            QualitySettings.shadows = enable ? ShadowQuality.All : ShadowQuality.Disable;
+            
+            SetText();
         }
 
         private void SetText()
         {
-            post = FindObjectOfType<PostProcessVolume>();
             LevelManager.SetFPSLimit(int.MaxValue);
             switch (qualityLevel)
             {
                 case 0:
                     qualityText.text = "低";
                     QualitySettings.shadows = ShadowQuality.Disable;
-                    post.enabled = false;
                     break;
                 case 1:
                     qualityText.text = "中";
                     QualitySettings.shadows = ShadowQuality.Disable;
-                    post.enabled = false;
                     break;
                 case 2:
                     qualityText.text = "高";
                     QualitySettings.shadows = ShadowQuality.All;
-                    post.enabled = false;
                     break;
             }
 
@@ -96,6 +95,14 @@ namespace DancingLineFanmade.UI
                 default:
                     antiAliasText.text = "Off";
                     break;
+            }
+            
+            QualitySettings.shadows = shadowToggle.isOn ? ShadowQuality.All : ShadowQuality.Disable;
+            
+            PostProcessLayer[] postProcessLayers = FindObjectsOfType<PostProcessLayer>(true);
+            foreach (PostProcessLayer p in postProcessLayers)
+            {
+                p.enabled = postProcessToggle.isOn;
             }
         }
     }
