@@ -47,6 +47,7 @@ namespace DancingLineFanmade.Level
         public bool noDeath = false;
         public bool drawDirection = false;
         public float musicDelay;
+        public float musicVolume = 1f;
 
         internal float Speed { get; set; }
         internal AudioSource SoundTrack { get; set; }
@@ -341,7 +342,7 @@ namespace DancingLineFanmade.Level
                 if (!Application.isEditor && PlayerPrefs.GetInt("DLMTP_CURSOR_SHOW", 1) == 0) Cursor.visible = false;
 
                 if (!SoundTrack) SoundTrack =
-                    AudioManager.PlayTrack(levelAudioClip, 1f);
+                    AudioManager.PlayTrack(levelAudioClip, musicVolume);
                 else AudioManager.Play();
 
                 yield return new WaitForSeconds(Math.Abs(delay));
@@ -373,7 +374,7 @@ namespace DancingLineFanmade.Level
                 yield return new WaitForSeconds(delay);
 
                 if (!SoundTrack) SoundTrack =
-                    AudioManager.PlayTrack(levelAudioClip,1f);
+                    AudioManager.PlayTrack(levelAudioClip, musicVolume);
                 else AudioManager.Play();
             }
         }
