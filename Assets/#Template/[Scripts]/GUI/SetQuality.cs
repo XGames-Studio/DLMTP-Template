@@ -11,8 +11,6 @@ namespace DancingLineFanmade.UI
     {
         [SerializeField] private Text qualityText, antiAliasText;
         [SerializeField] private Toggle postProcessToggle, shadowToggle;
-        
-        PostProcessVolume post;
 
         private int qualityLevel = 0;
         private int antiAliasLevel = 0;
@@ -50,7 +48,6 @@ namespace DancingLineFanmade.UI
         public void SetPostProcess(bool enable)
         {
             postProcessToggle.isOn = enable;
-            post.enabled = enable;
             
             SetText();
         }
