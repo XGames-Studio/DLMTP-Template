@@ -166,7 +166,19 @@ namespace DancingLineFanmade.Level
                 playedTimelines[a].Evaluate();
             }
             
+            ResetHenshinState();
+            
             GetComponent<BoxCollider>().size = levelData.playerHeadBoxColliderSize;
+        }
+        
+        public void ResetHenshinState()
+        {
+            henShin = false;
+            henshinObject = null;
+            showLineBody = true;
+            showLineTail = true;
+            objectOffset = Vector3.zero;
+            rotationTime = 0f;
         }
 
         private void Start()

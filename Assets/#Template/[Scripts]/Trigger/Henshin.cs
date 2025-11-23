@@ -20,17 +20,24 @@ public class Henshin : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Player.Instance.henShin = enableHenshin;
-            Player.Instance.henshinObject = henshinObject;
-            Player.Instance.objectOffset = objectOffset;
-            Player.Instance.showLineTail = showLineTail;
-            Player.Instance.showLineBody = showLineBody;
-            Player.Instance.rotationTime = animationTime;
-
-            if (facing == Facing.FirstDirection)
-                Player.Instance.henshinObject.transform.eulerAngles = Player.Instance.firstDirection;
-            else if (facing == Facing.SecondDirection)
-                Player.Instance.henshinObject.transform.eulerAngles = Player.Instance.secondDirection;
+            if (!enableHenshin)
+            {
+                Player.Instance.ResetHenshinState();
+            }
+            else
+            {
+                Player.Instance.henShin = enableHenshin;
+                Player.Instance.henshinObject = henshinObject;
+                Player.Instance.objectOffset = objectOffset;
+                Player.Instance.showLineTail = showLineTail;
+                Player.Instance.showLineBody = showLineBody;
+                Player.Instance.rotationTime = animationTime;
+                
+                if (facing == Facing.FirstDirection)
+                    Player.Instance.henshinObject.transform.eulerAngles = Player.Instance.firstDirection;
+                else if (facing == Facing.SecondDirection)
+                    Player.Instance.henshinObject.transform.eulerAngles = Player.Instance.secondDirection;
+            }
         }
     }
 
