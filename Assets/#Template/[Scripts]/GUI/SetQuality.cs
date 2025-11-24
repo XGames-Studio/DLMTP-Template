@@ -17,8 +17,13 @@ namespace DancingLineFanmade.UI
 
         private void Start()
         {
-            qualityLevel = QualitySettings.GetQualityLevel();
-            antiAliasLevel = QualitySettings.antiAliasing;
+            // qualityLevel = QualitySettings.GetQualityLevel();
+            // antiAliasLevel = QualitySettings.antiAliasing;
+            
+            qualityLevel = PlayerPrefs.GetInt("QualityLevel", 2);
+            antiAliasLevel = PlayerPrefs.GetInt("AntiAliasLevel", 0);
+            postProcessToggle.isOn = PlayerPrefs.GetInt("PostProcessVolume", 1) == 1;
+            shadowToggle.isOn = PlayerPrefs.GetInt("ShadowVolume", 1) == 1;
             
             SetText();
             foreach (ActiveByQuality a in FindObjectsOfType<ActiveByQuality>(true)) a.OnEnable();
@@ -101,6 +106,11 @@ namespace DancingLineFanmade.UI
             {
                 p.enabled = postProcessToggle.isOn;
             }
+            
+            PlayerPrefs.SetInt("QualityLevel", qualityLevel);
+            PlayerPrefs.SetInt("AntiAliasLevel", antiAliasLevel);
+            PlayerPrefs.SetInt("PostProcessVolume", postProcessToggle.isOn ? 1 : 0);
+            PlayerPrefs.SetInt("ShadowVolume", shadowToggle.isOn ? 1 : 0);
         }
     }
 }

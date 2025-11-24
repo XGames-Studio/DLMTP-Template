@@ -10,6 +10,9 @@ public class SetLatency : MonoBehaviour
 
     private void Start()
     {
+        Player.Instance.musicDelay = PlayerPrefs.GetFloat("MusicDelay", 0f);
+        Player.Instance.musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        
         SetText();
     }
 
@@ -47,5 +50,8 @@ public class SetLatency : MonoBehaviour
     {
         latencyText.text = $"{Math.Round(Player.Instance.musicDelay * 1000)} ms";
         volumeText.text = $"{Math.Round(Player.Instance.musicVolume * 100)}%";
+        
+        PlayerPrefs.SetFloat("MusicDelay", Player.Instance.musicDelay);
+        PlayerPrefs.SetFloat("MusicVolume", Player.Instance.musicVolume);
     }
 }
