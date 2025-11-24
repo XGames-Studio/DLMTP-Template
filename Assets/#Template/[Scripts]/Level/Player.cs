@@ -230,7 +230,6 @@ namespace DancingLineFanmade.Level
 
         private void Update()
         {
-#if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.R) && !loading)
             {
                 loading = true;
@@ -240,7 +239,7 @@ namespace DancingLineFanmade.Level
             if (Input.GetKeyDown(KeyCode.D)) debug = !debug;
             if (Input.GetKeyDown(KeyCode.K) && LevelManager.GameState == GameStatus.Playing) LevelManager.PlayerDeath(this, DieReason.Hit, cubesPrefab, null, false);
             if (Input.GetKeyDown(KeyCode.S) && LevelManager.GameState == GameStatus.Playing) LevelManager.CreateTrigger(selfTransform.position, Vector3.zero, new Vector3(3, 3, 3), false, "CreatedTrigger");
-#endif
+
             if (allowTurn && !LevelManager.IsPointedOnUI())
             {
                 switch (LevelManager.GameState)

@@ -113,7 +113,7 @@ public class NoteReader : EditorWindow
                         //自动
                         if (autoPlay)
                         {
-                            GameObject Tri = Instantiate(autoPlayTrigger, thisPostion + thisForward / 2, new Quaternion());
+                            GameObject Tri = Instantiate(autoPlayTrigger, thisPostion, new Quaternion());
                             Tri.transform.parent = autoPlayPar.transform;
                         }
 
