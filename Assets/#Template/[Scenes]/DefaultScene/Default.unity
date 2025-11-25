@@ -617,6 +617,7 @@ GameObject:
   - component: {fileID: 1680985574}
   - component: {fileID: 1680985576}
   - component: {fileID: 1680985577}
+  - component: {fileID: 1680985578}
   m_Layer: 0
   m_Name: LevelHolder
   m_TagString: Untagged
@@ -670,6 +671,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DLMTP_GAME.KeyBoardManager
   keyFunctions: []
+--- !u!114 &1680985578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680985569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b95203a76f78aef49bf9f06d6b4fbe71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DancingLineFanmade.Guidance.GuidanceController
+  createBoxes: 0
+  createLines: 0
+  boxHolder: {fileID: 202106110}
+  guidanceBoxColor: {r: 1, g: 1, b: 1, a: 1}
+  lineGap: 0.2
 --- !u!1 &1770342750
 GameObject:
   m_ObjectHideFlags: 0
