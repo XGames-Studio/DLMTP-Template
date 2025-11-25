@@ -5,12 +5,14 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DLMTP_GAME;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
+using UnityGUINamespace = UnityEngine.GUI;
 
 namespace DancingLineFanmade.Level
 {
@@ -115,6 +117,7 @@ namespace DancingLineFanmade.Level
 
         private int frame;
         private float lastTime;
+        private float fps;
         private const float timeInterval = 0.1f;
 
         private GameEvents events;
@@ -183,6 +186,8 @@ namespace DancingLineFanmade.Level
 
         private void Start()
         {
+            ResetKeyGroup();
+            
             levelData.SetLevelData();
             firstDirection = firstDirection.Convert();
             secondDirection = secondDirection.Convert();
@@ -196,8 +201,7 @@ namespace DancingLineFanmade.Level
             multiplayerListPrefab = Resources.Load<GameObject>("Prefabs/MultiplayerList");
 
             allowRestartGame = true;
-
-
+            
             selfTransform.GetComponent<MeshRenderer>().material = characterMaterial;
             tailPrefab.GetComponent<MeshRenderer>().material = characterMaterial;
 
@@ -228,18 +232,36 @@ namespace DancingLineFanmade.Level
             LevelManager.ResetRevivePlayer();
         }
 
-        private void Update()
+        public void ResetKeyGroup()
         {
-            if (Input.GetKeyDown(KeyCode.R) && !loading)
+            KeyBoardManager.instance.ClearKeyFunctions();
+            
+            KeyBoardManager.instance.AddKeyFunction(KeyCode.R, "重新开始", () =>
             {
+                if (loading) return;
                 loading = true;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
-            if (Input.GetKeyDown(KeyCode.C) && LevelManager.GameState == GameStatus.Playing) Debug.Log("当前时间：" + AudioManager.Time);
-            if (Input.GetKeyDown(KeyCode.D)) debug = !debug;
-            if (Input.GetKeyDown(KeyCode.K) && LevelManager.GameState == GameStatus.Playing) LevelManager.PlayerDeath(this, DieReason.Hit, cubesPrefab, null, false);
-            if (Input.GetKeyDown(KeyCode.S) && LevelManager.GameState == GameStatus.Playing) LevelManager.CreateTrigger(selfTransform.position, Vector3.zero, new Vector3(3, 3, 3), false, "CreatedTrigger");
+            });
+            
+            KeyBoardManager.instance.AddKeyFunction(KeyCode.K, "快速死亡", () =>
+            {
+                if (LevelManager.GameState != GameStatus.Playing) return;
+                LevelManager.PlayerDeath(this, DieReason.Hit, cubesPrefab, null, false);
+            });
+        }
 
+        private void Update()
+        {
+            #if UNITY_EDITOR
+                KeyBoardManager.instance.AddKeyFunction(KeyCode.D, "调试模式", () =>
+                {
+                    debug = !debug;
+                });
+            
+            GetFrame();
+            #endif
+            
+            
             if (allowTurn && !LevelManager.IsPointedOnUI())
             {
                 switch (LevelManager.GameState)
@@ -501,6 +523,50 @@ namespace DancingLineFanmade.Level
         }
 
 #if UNITY_EDITOR
+        private void GetFrame()
+        {
+            frame++;
+            if (Time.realtimeSinceStartup - lastTime < timeInterval) return;
+
+            float time = Time.realtimeSinceStartup - lastTime;
+            fps = frame / time;
+
+            lastTime = Time.realtimeSinceStartup;
+            frame = 0;
+        }
+
+        private void OnGUI()
+        {
+            GUIStyle style = new GUIStyle();
+            style.normal.textColor = LevelManager.GetColorByContent(sceneCamera.backgroundColor);
+            style.fontSize = 25;
+
+            int finalFps = fps > 999f ? 999 : (int)fps;
+            if (debug)
+            {
+                UnityGUINamespace.Label(new Rect(10, 10, 120, 50), "FPS：" + finalFps, style);
+                UnityGUINamespace.Label(new Rect(10, 40, 120, 50), "关卡进度：" + Math.Round(AudioManager.Progress * 100f) + "%（" + Math.Round(AudioManager.Progress * Player.Instance.levelData.levelTotalTime) + "秒/" + (Player.Instance.levelData.useCustomLevelTime ? Player.Instance.levelData.levelTotalTime : Player.Instance.SoundTrack.clip.length) + "秒）", style);
+                UnityGUINamespace.Label(new Rect(10, 70, 120, 50), "游戏状态：" + LevelManager.GameState, style);
+                UnityGUINamespace.Label(new Rect(10, 100, 120, 50), "线的坐标：" + selfTransform.localPosition, style);
+                UnityGUINamespace.Label(new Rect(10, 130, 120, 50), "线的朝向：" + selfTransform.localEulerAngles, style);
+                UnityGUINamespace.Label(new Rect(10, 160, 120, 50), "已获取方块数量：" + BlockCount, style);
+                UnityGUINamespace.Label(new Rect(10, 190, 120, 50), "已获取皇冠数量：" + CrownCount + "/3", style);
+                if (CameraFollower.Instance)
+                {
+                    UnityGUINamespace.Label(new Rect(10, 220, 120, 50), "相机偏移：" + CameraFollower.Instance.rotator.localPosition, style);
+                    UnityGUINamespace.Label(new Rect(10, 250, 120, 50), "相机角度：" + CameraFollower.Instance.rotator.localEulerAngles, style);
+                    UnityGUINamespace.Label(new Rect(10, 280, 120, 50), "相机缩放：" + CameraFollower.Instance.scale.localScale, style);
+                    UnityGUINamespace.Label(new Rect(10, 310, 120, 50), "视场大小：" + sceneCamera.fieldOfView, style);
+                }
+                else
+                {
+                    UnityGUINamespace.Label(new Rect(10, 220, 120, 50), "相机位置：" + sceneCamera.transform.position, style);
+                    UnityGUINamespace.Label(new Rect(10, 250, 120, 50), "相机角度：" + sceneCamera.transform.eulerAngles, style);
+                    UnityGUINamespace.Label(new Rect(10, 280, 120, 50), "视场大小：" + sceneCamera.fieldOfView, style);
+                }
+            }
+        }
+        
         private void OnDrawGizmos()
         {
             if (drawDirection) LevelManager.DrawDirection(transform, 4);

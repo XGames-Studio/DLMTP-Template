@@ -1,5 +1,7 @@
 using DG.Tweening;
 using System.Collections.Generic;
+using DancingLineFanmade.Level;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,14 +14,33 @@ namespace DancingLineFanmade.UI
         [SerializeField] private List<RectTransform> moveDown;
         [SerializeField] private List<RectTransform> moveUp;
         [SerializeField] private List<RectTransform> moveRight;
+        
+        [Title("关于页面")]
+        public Text titleText;
+        public Transform authorContainer;
+        public Text authorPrefab;
+        public Text templateText;
 
         private void OnEnable()
         {
+            GenerateAboutPage();
+            
 #if UNITY_EDITOR
             foreach (RectTransform g in moveUp) g.gameObject.SetActive(true);
 #else
             foreach(RectTransform g in moveUp) g.gameObject.SetActive(false);
 #endif
+        }
+        
+        public void GenerateAboutPage()
+        {
+            titleText.text = Player.Instance.levelData.levelTitle;
+            foreach (LevelData.AuthorInfo author in Player.Instance.levelData.authors)
+            {
+                Text authorText = Instantiate(authorPrefab, authorContainer);
+                authorText.text = $"{author.name}";
+                authorText.GetComponent<Button>().onClick.AddListener(() => { Application.OpenURL(author.pageURL); });
+            }
         }
 
         public void Hide()

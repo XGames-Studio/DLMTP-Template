@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using UnityEditor;
 using UnityEngine;
+using UnityGUINamespace = UnityEngine.GUI;
 
 public class ScreenCaptureEditor : EditorWindow
 {
@@ -13,7 +14,7 @@ public class ScreenCaptureEditor : EditorWindow
     void InitStyles()
     {
         initDone = true;
-        BigText = new GUIStyle(GUI.skin.label)
+        BigText = new GUIStyle(UnityGUINamespace.skin.label)
         {
             fontSize = 20,
             fontStyle = FontStyle.Bold

@@ -19,6 +19,8 @@ MonoBehaviour:
   gravity: {x: 0, y: -9.3, z: 0}
   playerHeadBoxColliderSize: {x: 0.3, y: 1, z: 0.3}
   levelAudioClip: {fileID: 8300000, guid: 50d62b8378d9e9743bcf220acce3d17e, type: 3}
+  useCustomLevelTime: 1
+  levelTotalTime: 2
   haveMultipleAudio: 0
   colors:
   - material: {fileID: 2100000, guid: 6b689dd40c56e9c4d89d730b21c8011a, type: 2}
@@ -29,3 +31,7 @@ MonoBehaviour:
     color: {r: 1, g: 0.98039216, b: 0.42352942, a: 1}
     hasEmission: 0
     intensity: 0
+  levelTitle: "\u6D4B\u8BD5\u5173\u5361"
+  authors:
+  - name: "\u7B71\u5915Sushi"
+    pageURL: https://space.bilibili.com/57003793

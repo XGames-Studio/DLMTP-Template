@@ -11,16 +11,28 @@ namespace DancingLineFanmade.Level
     [CreateAssetMenu(menuName = "Dancing Line Fanmade/Level Data", fileName = "Level Data")]
     public class LevelData : ScriptableObject
     {
-        public int saveID = 0;
-        public string levelTitleKey = "LevelName";
+        public int saveID = 0; // 共舞专用
+        public string levelTitleKey = "LevelName"; // 共舞专用
         [MinValue(0)] public float speed = 12;
         [MinValue(0f)] public float timeScale = 1f;
         public Vector3 gravity = LevelManager.defaultGravity;
         public Vector3 playerHeadBoxColliderSize = new Vector3(0.3f, 1f, 0.3f);
         public AudioClip levelAudioClip = null;
+        public bool useCustomLevelTime = false;
+        public float levelTotalTime = 0f;
         public bool haveMultipleAudio = false;
         [TableList] public List<SingleColor> colors = new List<SingleColor>();
 
+        [Title("关卡信息")] 
+        public string levelTitle;
+        public List<AuthorInfo> authors = new List<AuthorInfo>();
+
+        [Serializable]
+        public class AuthorInfo
+        {
+            public string name;
+            public string pageURL;
+        }
         internal void SetLevelData()
         {
             Player.Instance.Speed = speed;

@@ -17,6 +17,13 @@ namespace DancingLineFanmade.Guidance
         private void Start()
         {
             controller = FindObjectOfType<GuidanceController>();
+            if (!controller)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+            
+            
             SetGuidance(enabled);
 
             if (!controller.boxHolder)

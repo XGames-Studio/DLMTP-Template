@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System;
+using UnityGUINamespace = UnityEngine.GUI;
 
 [System.Serializable]
 [CanEditMultipleObjects]
@@ -142,7 +143,7 @@ public class NoteReader : EditorWindow
 
         GUILayout.EndVertical();
 
-        if (GUI.changed)
+        if (UnityGUINamespace.changed)
         {
             if (UnityEngine.Random.Range(0, 10) == 0) Debug.Log("[NoteReader] 感谢使用，来支持下子智君呗 https://space.bilibili.com/426181974");
         }

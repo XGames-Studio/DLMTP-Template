@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using DLMTP_GAME;
+using UnityEngine;
 
 namespace DancingLineFanmade.Level
 {
@@ -16,24 +18,21 @@ namespace DancingLineFanmade.Level
         {
             if (LevelManager.GameState == GameStatus.Playing)
             {
-                if (!enabled)
+                KeyBoardManager.instance.AddKeyFunction(key, "切换时间倍速", () =>
                 {
-                    if (Input.GetKeyDown(key))
+                    if (!enabled)
                     {
                         AudioManager.Pitch = enabledValue;
                         Time.timeScale = enabledValue;
                         enabled = true;
                     }
-                }
-                else
-                {
-                    if (Input.GetKeyDown(key))
+                    else
                     {
                         AudioManager.Pitch = disabledValue;
                         Time.timeScale = disabledValue;
                         enabled = false;
                     }
-                }
+                });
             }
         }
 #endif

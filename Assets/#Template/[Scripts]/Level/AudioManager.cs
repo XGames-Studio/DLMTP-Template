@@ -43,7 +43,9 @@ namespace DancingLineFanmade.Level
 
         public static float Progress
         {
-            get => Player.Instance.SoundTrack.time / Player.Instance.SoundTrack.clip.length;
+            get => Player.Instance.SoundTrack ? (Player.Instance.levelData.useCustomLevelTime 
+                ? Player.Instance.SoundTrack.time / Player.Instance.levelData.levelTotalTime 
+                : Player.Instance.SoundTrack.time / Player.Instance.SoundTrack.clip.length) : 0f;
         }
 
         public static void Stop()

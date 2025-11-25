@@ -2,6 +2,7 @@ using DancingLineFanmade.Level;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using DLMTP_GAME;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -77,7 +78,13 @@ namespace DancingLineFanmade.UI
                 barFill.sizeDelta = new Vector2(10f, 18f) + new Vector2(480f * percent, 0f);
                 percentage.text = ((int)(percent * 100f)).ToString() + "%";
                 block.text = blockCount + "/10";
-                title.text = player.levelData.levelTitleKey;
+                title.text = player.levelData.levelTitle;
+                
+                KeyBoardManager.instance.ClearKeyFunctions();
+                KeyBoardManager.instance.AddKeyFunction(KeyCode.R, "重新开始", () =>
+                {
+                    ReloadScene();
+                });
             }
             else
             {
@@ -87,6 +94,10 @@ namespace DancingLineFanmade.UI
                 foreach (CanvasGroup c in reviveAlpha) c.DOFade(1f, 0.4f).SetEase(Ease.Linear);
                 barFillRevive.sizeDelta = new Vector2(10f, 18f) + new Vector2(480f * percent, 0f);
                 percentageRevive.text = ((int)(percent * 100f)).ToString() + "%";
+                
+                KeyBoardManager.instance.ClearKeyFunctions();
+                KeyBoardManager.instance.AddKeyFunction(KeyCode.E, "复活", RevivePlayer);
+                KeyBoardManager.instance.AddKeyFunction(KeyCode.Q, "取消复活", CancelRevive);
             }
         }
 
@@ -101,6 +112,7 @@ namespace DancingLineFanmade.UI
         {
             foreach (Button b in buttonsRevive) b.interactable = false;
             player.RevivePlayer(player.currentCheckpoint);
+            player.ResetKeyGroup();
         }
 
         public void CancelRevive()
