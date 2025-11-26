@@ -9,9 +9,14 @@ namespace DLMTP_GAME
     
     public class KeyBoardFunctionsDisplay : MonoBehaviour
     {
-        private void Start()
+        private void OnEnable()
         {
             KeyBoardManager.instance.onKeyFunctionsChanged += RefreshKeyBoardFunctionsDisplay;
+        }
+        
+        private void OnDisable()
+        {
+            KeyBoardManager.instance.onKeyFunctionsChanged -= RefreshKeyBoardFunctionsDisplay;
         }
 
         public void RefreshKeyBoardFunctionsDisplay()
@@ -21,15 +26,6 @@ namespace DLMTP_GAME
             {
                 GetComponent<Text>().text += $"{KeyBoardManager.instance.keyFunctions[i].keyCode} : {KeyBoardManager.instance.keyFunctions[i].comment}    ";
             }
-        }
-
-        private void Update()
-        {
-            KeyBoardManager.instance.AddKeyFunction(KeyCode.V, "显示/隐藏键位显示", () =>
-            {
-                if (gameObject.activeSelf) gameObject.SetActive(false);
-                else gameObject.SetActive(true);
-            });
         }
     }
 

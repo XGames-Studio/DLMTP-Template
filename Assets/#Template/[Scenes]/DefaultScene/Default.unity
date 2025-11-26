@@ -365,7 +365,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 656156124}
-  - component: {fileID: 656156125}
   m_Layer: 0
   m_Name: GuideLineHolder
   m_TagString: Untagged
@@ -388,23 +387,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 608782114}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &656156125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656156123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b95203a76f78aef49bf9f06d6b4fbe71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DancingLineFanmade.Guidance.GuidanceController
-  createBoxes: 0
-  createLines: 1
-  boxHolder: {fileID: 0}
-  guidanceBoxColor: {r: 1, g: 1, b: 1, a: 1}
-  lineGap: 0.2
 --- !u!1 &766737583
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,8 +666,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DancingLineFanmade.Guidance.GuidanceController
   createBoxes: 0
-  createLines: 0
-  boxHolder: {fileID: 202106110}
+  createLines: 1
+  boxHolder: {fileID: 656156124}
   guidanceBoxColor: {r: 1, g: 1, b: 1, a: 1}
   lineGap: 0.2
 --- !u!1 &1770342750
