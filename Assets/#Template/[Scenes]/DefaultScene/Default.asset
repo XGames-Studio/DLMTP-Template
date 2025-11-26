@@ -31,7 +31,7 @@ MonoBehaviour:
     color: {r: 1, g: 0.98039216, b: 0.42352942, a: 1}
     hasEmission: 0
     intensity: 0
-  levelTitle: The Autumn
+  levelTitle: "\u6D4B\u8BD5\u573A\u666F"
   authors:
   - name: "\u7B71\u5915Sushi"
     pageURL: https://space.bilibili.com/57003793
