@@ -42,6 +42,17 @@ namespace DancingLineFanmade.Level
             rotator = selfTransform.Find("Rotator");
             scale = rotator.Find("Scale");
             thisCamera = scale.Find("Camera").GetComponent<Camera>();
+            LevelManager.revivePlayer += OnPlayerRevive;
+        }
+
+        private void OnDisable()
+        {
+            LevelManager.revivePlayer -= OnPlayerRevive;
+        }
+        
+        private void OnPlayerRevive()
+        {
+            selfTransform.position = target.position;
         }
 
         private void Update()

@@ -67,11 +67,13 @@ namespace DancingLineFanmade.Level
             get
             {
                 if (CameraFollower.Instance) return CameraFollower.Instance.transform.position;
+                else if (OldCameraFollower.Instance) return OldCameraFollower.Instance.transform.position;
                 else return Vector3.zero;
             }
             set
             {
                 if (CameraFollower.Instance) CameraFollower.Instance.transform.position = value;
+                else if (OldCameraFollower.Instance) OldCameraFollower.Instance.transform.position = value;
             }
         }
 
