@@ -75,6 +75,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af5bc3b1780cf754cb05b6cd268fab4b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4940883581127030780}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af5bc3b1780cf754cb05b6cd268fab4b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7568356009709251397}
   m_SourcePrefab: {fileID: 100100000, guid: af5bc3b1780cf754cb05b6cd268fab4b, type: 3}
 --- !u!1 &2951102853332215961 stripped
 GameObject:
@@ -104,3 +107,15 @@ CapsuleCollider:
   m_Height: 2.4
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7568356009709251397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2951102853332215961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842b6e3dc33b7ea4087a31fe28dfa94a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DancingLineFanmade.Trigger.Crystal
