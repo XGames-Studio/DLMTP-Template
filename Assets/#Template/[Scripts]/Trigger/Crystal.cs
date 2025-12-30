@@ -39,7 +39,7 @@ namespace DancingLineFanmade.Trigger
                 index = player.Checkpoints.Count;
                 if (QualitySettings.GetQualityLevel() > 0)
                 {
-                    effect = Instantiate(effectPrefab, transform.position, Quaternion.Euler(-90, 0, 0));
+                    effect = Instantiate(effectPrefab, transform.position, Quaternion.Euler(0, 0, 0));
                 }
 
                 LevelManager.revivePlayer += ResetData;

@@ -2,10 +2,11 @@ Shader "SVOM/MeshDepth"
 {
 	Properties
 	{
-		_Fading_Power("Fading_Power", Float) = 1
-		[HDR]_Color("Color", Color) = (0.7843137,0.7843137,0.7843137,0)
 		_Texture("Texture", 2D) = "white" {}
-		_Vector0("Vector 0", Vector) = (16,9,0,0)
+		_HeightAndWidth("HeightAndWidth", Vector) = (16,9,0,0)
+		_RollSpeed("RollSpeed", Vector) = (0,0,0,0)
+		[HDR]_MainColor("MainColor", Color) = (1,1,1,1)
+		_Fading_Power("Fading_Power", Float) = 1
 
 	}
 	
@@ -13,7 +14,7 @@ Shader "SVOM/MeshDepth"
 	{
 		
 		
-		Tags { "RenderType"="Opaque" }
+		Tags { "RenderType"="Opaque" "Queue"="Transparent" }
 	LOD 100
 
 		CGINCLUDE
@@ -23,7 +24,7 @@ Shader "SVOM/MeshDepth"
 		AlphaToMask Off
 		Cull Off
 		ColorMask RGBA
-		ZWrite On
+		ZWrite Off
 		ZTest LEqual
 		Offset 0 , 0
 		
@@ -45,7 +46,8 @@ Shader "SVOM/MeshDepth"
 			#pragma fragment frag
 			#pragma multi_compile_instancing
 			#include "UnityCG.cginc"
-			
+			#include "UnityShaderVariables.cginc"
+
 
 			struct appdata
 			{
@@ -67,12 +69,13 @@ Shader "SVOM/MeshDepth"
 				UNITY_VERTEX_OUTPUT_STEREO
 			};
 
-			uniform float4 _Color;
+			uniform float4 _MainColor;
 			UNITY_DECLARE_DEPTH_TEXTURE( _CameraDepthTexture );
 			uniform float4 _CameraDepthTexture_TexelSize;
 			uniform float _Fading_Power;
 			uniform sampler2D _Texture;
-			uniform float2 _Vector0;
+			uniform float2 _RollSpeed;
+			uniform float2 _HeightAndWidth;
 
 			
 			v2f vert ( appdata v )
@@ -118,9 +121,10 @@ Shader "SVOM/MeshDepth"
 				ase_positionSSNorm.z = ( UNITY_NEAR_CLIP_VALUE >= 0 ) ? ase_positionSSNorm.z : ase_positionSSNorm.z * 0.5 + 0.5;
 				float screenDepth1 = LinearEyeDepth(SAMPLE_DEPTH_TEXTURE( _CameraDepthTexture, ase_positionSSNorm.xy ));
 				float distanceDepth1 = abs( ( screenDepth1 - LinearEyeDepth( ase_positionSSNorm.z ) ) / ( _Fading_Power ) );
+				float2 panner37 = ( 1.0 * _Time.y * _RollSpeed + ( (ase_positionSSNorm).xy * _HeightAndWidth ));
 				
 				
-				finalColor = ( _Color * saturate( ( 1.0 - distanceDepth1 ) ) * tex2D( _Texture, ( (ase_positionSSNorm).xyzw * float4( _Vector0, 0.0 , 0.0 ) ).xy ).r * i.ase_color );
+				finalColor = ( _MainColor * saturate( ( 1.0 - distanceDepth1 ) ) * tex2D( _Texture, panner37 ).r * i.ase_color );
 				return finalColor;
 			}
 			ENDCG

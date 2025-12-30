@@ -37,6 +37,9 @@ Material:
     - __dirty: 0
     m_Colors:
     - _Color: {r: 23.968624, g: 23.968624, b: 23.968624, a: 1}
+    - _HeightAndWidth: {r: 4, g: 2.25, b: 0, a: 0}
+    - _MainColor: {r: 23.96863, g: 23.96863, b: 23.96863, a: 1}
+    - _RollSpeed: {r: 0.5, g: 0, b: 0, a: 0}
     - _Vector0: {r: 4, g: 2.25, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
