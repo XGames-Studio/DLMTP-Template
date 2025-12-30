@@ -118,7 +118,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.8
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -289,8 +289,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 30
-      minScalar: 25
+      scalar: 65
+      minScalar: 55
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1048,12 +1048,12 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 2.8902912
-          outSlope: 2.8902912
+          inSlope: 2
+          outSlope: 2
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
-          outWeight: 0.0591366
+          outWeight: 0
         - serializedVersion: 3
           time: 1
           value: 1
@@ -1369,7 +1369,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
+        key1: {r: 1, g: 1, b: 1, a: 0.09803922}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1385,9 +1385,9 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 16384
+        atime1: 26214
         atime2: 65535
-        atime3: 0
+        atime3: 65535
         atime4: 0
         atime5: 0
         atime6: 0
@@ -4863,7 +4863,7 @@ ParticleSystemRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 100
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 2
@@ -4895,7 +4895,7 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
 --- !u!1 &3010080042744123597
 GameObject:
   m_ObjectHideFlags: 0
@@ -9828,23 +9828,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1555213631443068960, guid: 57f7528d039a15e4a9f3da210a339922, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1555213631443068960, guid: 57f7528d039a15e4a9f3da210a339922, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1555213631443068960, guid: 57f7528d039a15e4a9f3da210a339922, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1555213631443068960, guid: 57f7528d039a15e4a9f3da210a339922, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1555213631443068960, guid: 57f7528d039a15e4a9f3da210a339922, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1555213631443068960, guid: 57f7528d039a15e4a9f3da210a339922, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -9856,7 +9856,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1555213631443072089, guid: 57f7528d039a15e4a9f3da210a339922, type: 3}
       propertyPath: ShapeModule.type
-      value: 2
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555213631443072089, guid: 57f7528d039a15e4a9f3da210a339922, type: 3}
+      propertyPath: ShapeModule.m_Rotation.x
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 1555213631443072089, guid: 57f7528d039a15e4a9f3da210a339922, type: 3}
       propertyPath: ShapeModule.radius.value
@@ -9876,7 +9880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1555213631443072089, guid: 57f7528d039a15e4a9f3da210a339922, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 75
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1555213631443072089, guid: 57f7528d039a15e4a9f3da210a339922, type: 3}
       propertyPath: CollisionModule.m_Dampen.scalar
