@@ -219,7 +219,11 @@ namespace DancingLineFanmade.Level
 
             string sceneName = SceneManager.GetActiveScene().name;
 
-            if (levelData.levelAudioClip)
+            if (levelData.haveMultipleAudio)
+            {
+                levelAudioClip = levelData.audioClips[0];
+            }
+            else if (levelData.levelAudioClip)
             {
                 levelAudioClip = levelData.levelAudioClip;
             }

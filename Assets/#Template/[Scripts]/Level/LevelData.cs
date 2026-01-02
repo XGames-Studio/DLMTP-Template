@@ -21,6 +21,7 @@ namespace DancingLineFanmade.Level
         public bool useCustomLevelTime = false;
         public float levelTotalTime = 0f;
         public bool haveMultipleAudio = false;
+        public List<AudioClip> audioClips = new List<AudioClip>();
         [TableList] public List<SingleColor> colors = new List<SingleColor>();
 
         [Title("关卡信息")] 
