@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CrystalMaterial
-  m_Shader: {fileID: 4800000, guid: c688395260843484ea3a7c0b8c4de0cc, type: 3}
+  m_Shader: {fileID: 4800000, guid: f7088b31edb5e4542a0f71a8fc202b1d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -26,19 +26,24 @@ Material:
     m_Ints: []
     m_Floats:
     - _Bottom_Power: 2
+    - _Gradient_Power: 2
     - _Gradient_Strength: 15
     - _Power_Sum: 4
     - _Power_X: 0
     - _Power_Y: 0
     - _Power_Z: -3
     - _ReflectPower: 1.5
+    - _Reflect_Power: 8
     - _SmoothPower: 1.5
     - __dirty: 0
     m_Colors:
     - _Bottom: {r: 1, g: 0.5127614, b: 0.2396226, a: 1}
     - _BottomColor: {r: 0.2671057, g: 0.6257078, b: 0.7735849, a: 1}
     - _ReflectColor: {r: 1.4980392, g: 1.4980392, b: 1.4980392, a: 1}
+    - _Reflect_Color: {r: 2.9960787, g: 2.9960787, b: 2.9960787, a: 1}
+    - _Split_Normal_Vector: {r: 0, g: 1, b: 0, a: 0}
+    - _Split_Pos: {r: 1, g: 1, b: 1, a: 0}
     - _Top: {r: 1, g: 0.9940535, b: 0, a: 1}
-    - _TopColor: {r: 0.05454609, g: 0.12189483, b: 0.17735851, a: 1}
+    - _TopColor: {r: 0.15930933, g: 0.33061928, b: 0.4716981, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

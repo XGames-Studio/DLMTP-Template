@@ -1,16 +1,14 @@
-Shader "SVOM/Gradient_Emission"
+Shader "SVOM/Gradient/Emission/Smooth"
 {
 	Properties
 	{
-		[HDR]_TopColor("TopColor", Color) = (1,0.9940535,0)
-		[HDR]_BottomColor("BottomColor", Color) = (1,0.5127614,0.2396226)
-		_Power_X("Power_X", Float) = 0
-		_Power_Y("Power_Y", Float) = 1
-		_Power_Z("Power_Z", Float) = 0
-		_Power_Sum("Power_Sum", Range( -200 , 200)) = 0
-		_Gradient_Strength("Gradient_Strength", Range( 0 , 200)) = 0.5
-		[HDR]_ReflectColor("ReflectColor", Color) = (1,1,1)
-		_ReflectPower("ReflectPower", Float) = 5
+		[HDR]_TopColor("TopColor", Color) = (0,0.9555726,1)
+		[HDR]_BottomColor("BottomColor", Color) = (0.1803922,0.3176471,0.7490196)
+		_Split_Pos("Split_Pos", Vector) = (1,1,1,0)
+		_Split_Normal_Vector("Split_Normal_Vector", Vector) = (1,1,1,0)
+		_Gradient_Power("Gradient_Power", Float) = 2
+		[HDR]_Reflect_Color("Reflect_Color", Color) = (4,4,4)
+		_Reflect_Power("Reflect_Power", Float) = 5
 		[HideInInspector] __dirty( "", Int ) = 1
 	}
 
@@ -21,7 +19,7 @@ Shader "SVOM/Gradient_Emission"
 		CGINCLUDE
 		#include "UnityPBSLighting.cginc"
 		#include "Lighting.cginc"
-		#pragma target 3.0
+		#pragma target 3.5
 		#define ASE_VERSION 19800
 		struct Input
 		{
@@ -30,15 +28,13 @@ Shader "SVOM/Gradient_Emission"
 			float3 worldNormal;
 		};
 
-		uniform float3 _BottomColor;
 		uniform float3 _TopColor;
-		uniform float _Gradient_Strength;
-		uniform float _Power_X;
-		uniform float _Power_Y;
-		uniform float _Power_Z;
-		uniform float _Power_Sum;
-		uniform float3 _ReflectColor;
-		uniform float _ReflectPower;
+		uniform float3 _BottomColor;
+		uniform float _Gradient_Power;
+		uniform float3 _Split_Pos;
+		uniform float3 _Split_Normal_Vector;
+		uniform float3 _Reflect_Color;
+		uniform float _Reflect_Power;
 
 		void vertexDataFunc( inout appdata_full v, out Input o )
 		{
@@ -49,20 +45,24 @@ Shader "SVOM/Gradient_Emission"
 
 		void surf( Input i , inout SurfaceOutputStandard o )
 		{
-			float4 temp_cast_0 = (_Gradient_Strength).xxxx;
 			float3 ase_positionOS = i.ase_positionOS4f.xyz;
-			float4 appendResult30 = (float4(( ase_positionOS.x * _Power_X ) , ( ase_positionOS.y * _Power_Y ) , ( ase_positionOS.z * _Power_Z ) , 0.0));
-			float4 smoothstepResult14 = smoothstep( float4( 0,0,0,0 ) , temp_cast_0 , ( appendResult30 + _Power_Sum ));
-			float3 lerpResult5 = lerp( _BottomColor , _TopColor , smoothstepResult14.xyz);
+			float dotResult78 = dot( ( _Split_Pos - ase_positionOS ) , _Split_Normal_Vector );
+			float ifLocalVar76 = 0;
+			if( dotResult78 <= 0.0 )
+				ifLocalVar76 = 0.0;
+			else
+				ifLocalVar76 = ( dotResult78 / length( _Split_Normal_Vector ) );
+			float smoothstepResult14 = smoothstep( 0.0 , _Gradient_Power , ifLocalVar76);
+			float3 lerpResult5 = lerp( _TopColor , _BottomColor , smoothstepResult14);
 			float3 ase_positionWS = i.worldPos;
 			float3 ase_viewVectorWS = ( _WorldSpaceCameraPos.xyz - ase_positionWS );
 			float3 ase_viewDirWS = normalize( ase_viewVectorWS );
 			float3 ase_normalWS = i.worldNormal;
-			float fresnelNdotV31 = dot( ase_normalWS, ase_viewDirWS );
-			float fresnelNode31 = ( 0.0 + 1.0 * pow( 1.0 - fresnelNdotV31, _ReflectPower ) );
-			float3 lerpResult33 = lerp( lerpResult5 , _ReflectColor , fresnelNode31);
-			o.Albedo = lerpResult33;
-			o.Emission = lerpResult33;
+			float fresnelNdotV86 = dot( ase_normalWS, ase_viewDirWS );
+			float fresnelNode86 = ( 0.0 + 1.0 * pow( 1.0 - fresnelNdotV86, _Reflect_Power ) );
+			float3 temp_output_89_0 = ( lerpResult5 + ( _Reflect_Color * fresnelNode86 ) );
+			o.Albedo = temp_output_89_0;
+			o.Emission = temp_output_89_0;
 			o.Alpha = 1;
 		}
 
@@ -79,7 +79,7 @@ Shader "SVOM/Gradient_Emission"
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
-			#pragma target 3.0
+			#pragma target 3.5
 			#pragma multi_compile_shadowcaster
 			#pragma multi_compile UNITY_PASS_SHADOWCASTER
 			#pragma skip_variants FOG_LINEAR FOG_EXP FOG_EXP2
