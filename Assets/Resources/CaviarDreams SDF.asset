@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: CaviarDreams Atlas Material
-  m_Shader: {fileID: 4800000, guid: f7ada0af4f174f0694ca6a487b8f543d, type: 3}
+  m_Shader: {fileID: 4800000, guid: 85187c2149c549c5b33f0cdb02836b17, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
