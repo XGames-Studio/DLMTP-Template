@@ -3,7 +3,6 @@ using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using UnityEngine.Rendering.PostProcessing;
 
-// 轨道颜色：深棕色（贴合暗角的视觉特性）
 [TrackColor(0.3f, 0.2f, 0.1f)]
 [TrackClipType(typeof(VignetteClip))]
 [TrackBindingType(typeof(PostProcessVolume))]
