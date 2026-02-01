@@ -22,6 +22,7 @@ MonoBehaviour:
   useCustomLevelTime: 0
   levelTotalTime: 2
   haveMultipleAudio: 0
+  audioClips: []
   colors:
   - material: {fileID: 2100000, guid: 6b689dd40c56e9c4d89d730b21c8011a, type: 2}
     color: {r: 0, g: 0.7721448, b: 1, a: 1}
