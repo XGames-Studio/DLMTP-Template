@@ -1,0 +1,9 @@
+﻿<Solution>
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Assembly-CSharp-firstpass.csproj" />
+  <Project Path="Coffee.UIParticle.csproj" />
+  <Project Path="Coffee.UIParticle.Tests.csproj" />
+  <Project Path="Coffee.UIParticle.Editor.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="Coffee.UIParticle.Editor.Tests.csproj" />
+</Solution>
