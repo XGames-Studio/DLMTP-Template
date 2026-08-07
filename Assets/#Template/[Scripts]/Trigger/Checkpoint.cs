@@ -15,7 +15,7 @@ namespace DancingLineFanmade.Trigger
         private Player player;
 
         public Transform rotator;
-        
+
         [Space(10.0f), SerializeField] private bool AutoRecord = false;
         [SerializeField, HideIf(nameof(AutoRecord))]
         private float GameTime;
@@ -61,6 +61,7 @@ namespace DancingLineFanmade.Trigger
         private List<SetActive> actives = new List<SetActive>();
         private List<PlayAnimator> animators = new List<PlayAnimator>();
         private List<FakePlayer> fakes = new List<FakePlayer>();
+        private List<TimelineTrackSwitcher> trackSwitchers = new List<TimelineTrackSwitcher>();
 
         private void Start()
         {
@@ -74,6 +75,7 @@ namespace DancingLineFanmade.Trigger
             actives = FindObjectsOfType<SetActive>(true).ToList();
             animators = FindObjectsOfType<PlayAnimator>(true).ToList();
             fakes = FindObjectsOfType<FakePlayer>(true).ToList();
+            trackSwitchers = FindObjectsOfType<TimelineTrackSwitcher>(true).ToList();
         }
 
         private void Update()
@@ -118,6 +120,8 @@ namespace DancingLineFanmade.Trigger
             foreach (SetActive s in actives) if (!s.activeOnAwake) s.AddRevives();
             foreach (PlayAnimator a in animators) foreach (SingleAnimator s in a.animators) if (!s.dontRevive) s.GetState();
             foreach (FakePlayer f in fakes) f.GetData();
+            foreach (TimelineTrackSwitcher ts in trackSwitchers) ts.SaveState();
+
             player.GetAnimatorProgresses();
             player.GetTimelineProgresses(AutoRecord, GameTime);
         }
@@ -126,14 +130,14 @@ namespace DancingLineFanmade.Trigger
         {
             DOTween.Clear();
             LevelUI.Instance.HideScreen(fog.fogColor, 0.32f, () =>
-                {
-                    ResetScene();
-                    LevelManager.revivePlayer.Invoke();
-                    LevelManager.DestroyRemain();
-                    Player.Rigidbody.isKinematic = true;
-                    if (!usedRevive) Player.Instance.CrownCount--;
-                    usedRevive = true;
-                },
+            {
+                ResetScene();
+                LevelManager.revivePlayer.Invoke();
+                LevelManager.DestroyRemain();
+                Player.Rigidbody.isKinematic = true;
+                if (!usedRevive) Player.Instance.CrownCount--;
+                usedRevive = true;
+            },
                 () =>
                 {
                     Player.Rigidbody.isKinematic = false;
@@ -171,9 +175,12 @@ namespace DancingLineFanmade.Trigger
             player.firstDirection = playerFirstDirection;
             player.secondDirection = playerSecondDirection;
             LevelManager.InitPlayerPosition(player, revivePosition.position, true, direction);
+
             foreach (SetActive s in actives) if (!s.activeOnAwake) s.Revive();
             foreach (PlayAnimator a in animators) foreach (SingleAnimator s in a.animators) if (!s.dontRevive && s.played) s.SetState();
             foreach (FakePlayer f in fakes) if (f.playing) f.ResetState();
+            foreach (TimelineTrackSwitcher ts in trackSwitchers) ts.RestoreState();
+
             player.SetAnimatorProgresses();
             player.SetTimelineProgresses();
 
@@ -184,19 +191,6 @@ namespace DancingLineFanmade.Trigger
             Time.timeScale = 1;
             Player.Instance.GetComponent<BoxCollider>().size = Player.Instance.levelData.playerHeadBoxColliderSize;
             Player.Instance.transform.localScale = new Vector3(1f, 1f, 1f);
-
-            if (CameraFollower.Instance != null)
-            {
-                CameraFollower.Instance.KillAllCameraTweens();
-            }
-
-            player.transform.DOKill();
-
-            // 强制归零，防止复活后第一次震动继承了死亡时的残余强度
-            if (CameraFollower.Instance != null)
-            {
-                CameraFollower.Instance.ResetShake();
-            }
         }
     }
 }
