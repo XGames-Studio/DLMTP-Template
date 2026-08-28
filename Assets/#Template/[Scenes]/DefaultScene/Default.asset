@@ -25,7 +25,7 @@ MonoBehaviour:
   audioClips: []
   colors:
   - material: {fileID: 2100000, guid: 6b689dd40c56e9c4d89d730b21c8011a, type: 2}
-    color: {r: 0, g: 0.7721448, b: 1, a: 1}
+    color: {r: 1, g: 1, b: 0, a: 1}
     hasEmission: 0
     intensity: 0
   - material: {fileID: 2100000, guid: 4a9a05847c8609548b12b570d0f8317f, type: 2}
