@@ -1203,6 +1203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1183040924}
+  - component: {fileID: 1183040925}
   m_Layer: 0
   m_Name: Collection_Group
   m_TagString: Untagged
@@ -1235,6 +1236,28 @@ Transform:
   - {fileID: 184538252}
   m_Father: {fileID: 608782114}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1183040925
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183040923}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1193662960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1532,7 +1555,7 @@ PlayableDirector:
   m_GameObject: {fileID: 1438375825}
   m_Enabled: 1
   serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 3db453a5bd0c6db4a890978fa53a20d4, type: 2}
+  m_PlayableAsset: {fileID: 0}
   m_InitialState: 1
   m_WrapMode: 0
   m_DirectorUpdateMode: 1
@@ -1540,6 +1563,8 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: -6991862282957973549, guid: 3db453a5bd0c6db4a890978fa53a20d4, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -8993041578195452534, guid: a97c4fb127c9bdb47b54a87f0c2fcc68, type: 2}
+    value: {fileID: 1183040925}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1525485057 stripped
@@ -2195,8 +2220,7 @@ MonoBehaviour:
   secondDirection: {x: 0, y: 0, z: 0}
   poolSize: 100
   playedAnimators: []
-  playedTimelines:
-  - {fileID: 1438375827}
+  playedTimelines: []
   allowTurn: 1
   noDeath: 0
   drawDirection: 0
