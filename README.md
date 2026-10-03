@@ -2,7 +2,7 @@
 
 修改自：[冰焰模板 4.3.0](https://chinadlrs.com/app/?id=41)
 
-Unity版本：Unity 6000.0.25f1
+Unity版本：Unity 6000.3.23f1
 
 ## 模板说明
 本模板为 [SoraSush776/MaxIF-4-3-0](https://github.com/SoraSushi776/MaxIFT-4-3-0) 的再次修改
@@ -36,3 +36,5 @@ Unity版本：Unity 6000.0.25f1
 2. 在你的关卡被同意收录后，你需要向我们提供你的关卡的英文名、中文名、实用音乐、音乐作者、关卡作者这些信息
 
 感谢你选择使用这个模板！
+
+2026.10.03
